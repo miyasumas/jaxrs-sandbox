@@ -17,6 +17,7 @@ import com.google.inject.Injector;
 
 /**
  * Jersey 設定
+ * 
  * @author MIYASAKA Yasumasa
  * @since 2014/09/07
  */
