@@ -1,4 +1,4 @@
-package com.github.miyasumas.jaxrs.entity;
+package com.github.miyasumas.jaxrs.api.entity;
 
 /**
  * sample

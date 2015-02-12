@@ -1,4 +1,7 @@
 package com.github.miyasumas.jaxrs;
+
+import com.github.miyasumas.jaxrs.api.resource.SampleResource;
+import com.github.miyasumas.jaxrs.view.resource.HelloJspResource;
 import com.google.inject.servlet.ServletModule;
 
 /**
@@ -14,5 +17,7 @@ public class SandboxModule extends ServletModule {
 	 */
 	@Override
 	protected void configureServlets() {
+		bind(HelloJspResource.class);
+		bind(SampleResource.class);
 	}
 }

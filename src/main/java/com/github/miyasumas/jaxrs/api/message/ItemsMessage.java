@@ -1,4 +1,4 @@
-package com.github.miyasumas.jaxrs.message;
+package com.github.miyasumas.jaxrs.api.message;
 
 import java.util.LinkedList;
 import java.util.List;

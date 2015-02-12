@@ -1,6 +1,7 @@
 package com.github.miyasumas.jaxrs;
 
 
+import javax.servlet.annotation.WebListener;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.servlet.GuiceServletContextListener;
@@ -10,6 +11,7 @@ import com.google.inject.servlet.GuiceServletContextListener;
  * @author miyasumas
  * @since 2014/09/23
  */
+@WebListener
 public class SandboxGuiceServletContextListener extends GuiceServletContextListener {
 
 	/**

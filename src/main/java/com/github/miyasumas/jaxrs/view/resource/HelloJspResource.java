@@ -1,4 +1,4 @@
-package com.github.miyasumas.jaxrs.resource;
+package com.github.miyasumas.jaxrs.view.resource;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -9,10 +9,12 @@ import javax.ws.rs.QueryParam;
 import org.glassfish.jersey.server.mvc.Template;
 
 /**
+ * Hello
+ * 
  * @author MIYASAKA Yasumasa
  * @since 2014/11/04
  */
-@Path("view")
+@Path("hello")
 public class HelloJspResource {
 
 	@GET

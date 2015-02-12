@@ -1,4 +1,4 @@
-package com.github.miyasumas.jaxrs.resource;
+package com.github.miyasumas.jaxrs.api.resource;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -6,15 +6,15 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
-import com.github.miyasumas.jaxrs.entity.Sample;
-import com.github.miyasumas.jaxrs.message.ItemsMessage;
+import com.github.miyasumas.jaxrs.api.entity.Sample;
+import com.github.miyasumas.jaxrs.api.message.ItemsMessage;
 
 /**
  * Sample
  * @author MIYASAKA Yasumasa
  * @since 2014/10/24
  */
-@Path("api")
+@Path("sample")
 public class SampleResource {
 
 	@GET

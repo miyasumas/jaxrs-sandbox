@@ -1,7 +1,8 @@
-package com.github.miyasumas.jaxrs;
+package com.github.miyasumas.jaxrs.view;
 
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
+import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.ext.ContextResolver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,23 +17,25 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Injector;
 
 /**
- * Jersey 設定
+ * 画面側の JAX-RS 設定
  * 
  * @author MIYASAKA Yasumasa
- * @since 2014/09/07
+ * @author Last changed by:$Author$
+ * @version $Rev$ $Date$
+ * @since 2015/02/12
  */
-public class SandboxApplication extends ResourceConfig {
+@ApplicationPath("/view")
+public class ViewApplication extends ResourceConfig {
 
 	/**
 	 * ログ
 	 */
-	private static final Logger logger = LogManager.getLogger(SandboxApplication.class);
+	private static final Logger logger = LogManager.getLogger(ViewApplication.class);
 
 	@Inject
-	public SandboxApplication(ServiceLocator serviceLocator, ServletContext context) {
-		packages(SandboxApplication.class.getPackage().getName());
+	public ViewApplication(ServiceLocator serviceLocator, ServletContext context) {
+		packages(getClass().getPackage().getName());
 		register(JspMvcFeature.class);
-		register(JacksonFeature.class);
 		register(MultiPartFeature.class);
 		register(new ContextResolver<ObjectMapper>() {
 			@Override
@@ -44,8 +47,10 @@ public class SandboxApplication extends ResourceConfig {
 		GuiceBridge.getGuiceBridge().initializeGuiceBridge(serviceLocator);
 		GuiceIntoHK2Bridge guiceBridge = serviceLocator.getService(GuiceIntoHK2Bridge.class);
 		Injector injector = Injector.class.cast(context.getAttribute(Injector.class.getName()));
-		guiceBridge.bridgeGuiceInjector(injector);
+		guiceBridge.bridgeGuiceInjector(injector.createChildInjector());
 
-		logger.info("Injector: {}", injector);
+		logger.info("Service Locator Id: {}", serviceLocator.getLocatorId());
+		logger.info("Injector: {}", injector.getAllBindings());
+		logger.info("Loaded: {}", getClass().getName());
 	}
 }
